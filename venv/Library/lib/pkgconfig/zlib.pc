@@ -1,0 +1,13 @@
+prefix=c:/Users/dr120/ATS/venv/Library
+exec_prefix=c:/Users/dr120/ATS/venv/Library
+libdir=c:/Users/dr120/ATS/venv/Library/lib
+sharedlibdir=c:/Users/dr120/ATS/venv/Library/lib
+includedir=c:/Users/dr120/ATS/venv/Library/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.3.1
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
