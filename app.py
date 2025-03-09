@@ -27,7 +27,7 @@ def input_pdf_setup(uploaded_file):
         raise FileNotFoundError("No file uploaded")
 
     try:
-        # Convert PDF to image
+        ## Convert PDF to image
         images = pdf2image.convert_from_bytes(uploaded_file.read())
         if not images:
             raise ValueError("Could not extract images from PDF")
@@ -98,20 +98,3 @@ if uploaded_file is not None:
                 st.write(response)
             except Exception as e:
                 st.error(f"Error: {e}")
-
-from pdf2image import convert_from_path
-
-import os
-import sys
-
-# Workaround: Download Poppler manually for Streamlit Cloud
-poppler_path = "/app/poppler-23.08.0/Library/bin"  # Adjust the version if needed
-
-if not os.path.exists(poppler_path):
-    if sys.platform == "linux":
-        os.system("apt-get install -y poppler-utils")
-    else:
-        raise RuntimeError("Poppler is not installed, and Streamlit Cloud does not support system installs.")
-
-# Convert PDF using Poppler path
-images = convert_from_path("your_file.pdf", poppler_path=poppler_path)
